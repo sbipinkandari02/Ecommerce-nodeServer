@@ -17,36 +17,6 @@ The frontend (React) is maintained in a **separate repository**. This backend fo
 * **JWT** (authentication – optional)
 * **dotenv** (environment configuration)
 
----
-
-## 📁 Backend Project Structure
-
-```text
-backend/
-│
-├── src/
-│   ├── app.ts            # Express app configuration
-│   ├── server.ts         # Server entry point
-│   │
-│   ├── config/
-│   │   └── db.ts         # MongoDB connection
-│   │
-│   ├── controllers/      # Request handlers
-│   ├── routes/           # API routes
-│   ├── models/           # Mongoose models
-│   ├── middlewares/      # Custom middlewares (auth, multer, error)
-│   ├── utils/            # Helpers (TryCatch, ErrorHandler, etc.)
-│   └── types/            # Custom TypeScript types
-│
-├── .env
-├── .env.example
-├── .gitignore
-├── package.json
-└── tsconfig.json
-```
-
----
-
 ## 🔐 Environment Variables
 
 Create a `.env` file in the **root of this backend repo**:
