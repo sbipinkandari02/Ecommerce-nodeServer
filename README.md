@@ -1,14 +1,12 @@
-# MERN Stack Application (TypeScript)
+# MERN Backend Application (Node.js + Express + TypeScript)
 
-A **production-grade MERN (MongoDB, Express, React, Node.js)** application built using **TypeScript**, following **clean architecture**, **scalable folder structure**, and **Git peer/team best practices**.
+This repository contains **ONLY the Backend** part of a **production-grade MERN application**, built with **Node.js, Express, MongoDB, and TypeScript**.
 
-This repository is designed for **real-world development**, collaboration, and long-term maintenance.
+The frontend (React) is maintained in a **separate repository**. This backend follows **enterprise-level standards**, clean architecture, and **Git peer/team collaboration rules**.
 
 ---
 
-## 🚀 Tech Stack
-
-### Backend
+## 🚀 Backend Tech Stack
 
 * **Node.js**
 * **Express.js**
@@ -17,45 +15,59 @@ This repository is designed for **real-world development**, collaboration, and l
 * **Multer** (file uploads)
 * **Cloudinary** (media storage – optional)
 * **JWT** (authentication – optional)
+* **dotenv** (environment configuration)
 
-### Frontend
+---
 
-* **React.js**
-* **TypeScript**
-* **Redux Toolkit** (state management)
-* **React Router**
-* **Axios**
+## 📁 Backend Project Structure
 
-### Tooling & Standards
+```text
+backend/
+│
+├── src/
+│   ├── app.ts            # Express app configuration
+│   ├── server.ts         # Server entry point
+│   │
+│   ├── config/
+│   │   └── db.ts         # MongoDB connection
+│   │
+│   ├── controllers/      # Request handlers
+│   ├── routes/           # API routes
+│   ├── models/           # Mongoose models
+│   ├── middlewares/      # Custom middlewares (auth, multer, error)
+│   ├── utils/            # Helpers (TryCatch, ErrorHandler, etc.)
+│   └── types/            # Custom TypeScript types
+│
+├── .env
+├── .env.example
+├── .gitignore
+├── package.json
+└── tsconfig.json
+```
 
-* ESLint + Prettier
-* Git (feature-based branching)
-* Environment-based configuration
-* REST API best practices
-
+---
 
 ## 🔐 Environment Variables
 
-Create a `.env` file inside the **backend** folder:
+Create a `.env` file in the **root of this backend repo**:
 
 ```env
 PORT=8000
 MONGO_URI=mongodb://127.0.0.1:27017
 ```
 
-> ⚠️ Never commit `.env` files to Git. Use `.env.example` instead.
+> ⚠️ Do NOT commit `.env` files. Always use `.env.example` for reference.
 
 ---
 
 ## 🛠 Backend Setup
 
 ```bash
-cd backend
 npm install
 npm run dev
 ```
 
-Server will start on:
+Server will run on:
 
 ```text
 http://localhost:8000
@@ -63,82 +75,64 @@ http://localhost:8000
 
 ---
 
-## 🛠 Frontend Setup
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-Frontend runs on:
-
-```text
-http://localhost:3000
-```
-
----
-
 ## 🌿 Git Branching Strategy (Peer / Team Standard)
 
-We follow a **feature-based branching model**.
+This backend repository follows a **feature-based branching workflow**.
 
-### Main Branches
+### Permanent Branches
 
-* `main` → Production-ready code
-* `develop` → Active development branch
+* `main` → Production-ready backend code
+* `develop` → Active backend development
 
-### Feature Branches
+### Feature Branches (Backend-specific)
 
 ```text
-feature/auth-login
-feature/product-crud
-feature/cart-module
+feature/auth-backend
+feature/product-crud-backend
+feature/order-api
+feature/multer-upload
 ```
 
-### Bug Fixes
+### Bug Fix Branches
 
 ```text
-fix/multer-upload-issue
 fix/mongoose-connection
+fix/multer-formdata-issue
 ```
 
-### Hotfix (Production bugs)
+### Hotfix Branches
 
 ```text
-hotfix/payment-crash
+hotfix/production-crash
 ```
 
 ---
 
-## 🔁 Development Workflow
+## 🔁 Backend Development Workflow
 
-1. **Create feature branch from `develop`**
+1. Create a feature branch from `develop`
 
    ```bash
    git checkout develop
-   git pull
-   git checkout -b feature/product-crud
+   git pull origin develop
+   git checkout -b feature/product-crud-backend
    ```
 
-2. **Commit with clear messages**
+2. Commit with meaningful messages
 
    ```bash
    git commit -m "feat: add product create API"
    ```
 
-3. **Push & raise Pull Request**
+3. Push branch
 
    ```bash
-   git push origin feature/product-crud
+   git push origin feature/product-crud-backend
    ```
 
-4. **Peer Review Required**
+4. Create Pull Request → `develop`
 
-   * Code review by at least **1 teammate**
-   * No direct push to `main`
-
-5. **Merge into `develop`**
+5. **Peer Review is mandatory** (no direct pushes to `main`)
 
 ---
 
@@ -146,5 +140,73 @@ hotfix/payment-crash
 
 ```text
 feat: add product update API
-fix: resolve multer file i
+fix: resolve multer upload issue
+refactor: optimize product controller
+chore: update dependencies
 ```
+
+---
+
+## 🧪 Code Standards (Backend)
+
+* TypeScript strict mode enabled
+* No `any` unless absolutely required
+* Centralized error handling
+* Reusable middlewares
+* Proper HTTP status codes
+* Clean separation of concerns
+
+---
+
+## 🧼 Linting & Formatting
+
+```bash
+npm run lint
+npm run format
+```
+
+---
+
+## 📦 Build & Run for Production
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+## 🔐 Security Best Practices
+
+* Validate all request payloads
+* Sanitize file uploads
+* Secure MongoDB connection
+* Use CORS & Helmet
+* Never expose secrets in code
+
+---
+
+## 🤝 Contribution Guidelines (Backend)
+
+* Follow branch naming rules
+* Keep PRs small and focused
+* Add meaningful commit messages
+* Ensure APIs are tested before PR
+
+---
+
+## 📄 License
+
+MIT License
+
+---
+
+## ✨ Notes
+
+This repository intentionally contains **only backend code** for a MERN application.
+
+Frontend (React) is handled separately and communicates with this backend via REST APIs.
+
+---
+
+Happy Backend Coding 🚀
