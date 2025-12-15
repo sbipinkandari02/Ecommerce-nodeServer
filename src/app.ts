@@ -7,6 +7,7 @@ import cors from "cors";
 
 // Importing Routes
 import userRoute from "./routes/user.js";
+import productRoute from "./routes/products.js";
 
 config({
   path: "./.env",
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
 
 // Using Routes
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/product", productRoute);
 
 app.use(errorMiddleware);
 
