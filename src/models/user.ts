@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import validator from "validator";
 
 interface IUser extends Document {
-  _id: string;
+  // _id: string;
   name: string;
   email: string;
   photo: string;
