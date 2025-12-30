@@ -1,7 +1,7 @@
 # MERN Backend Application (Node.js + Express + TypeScript)
 
 This repository contains **ONLY the Backend** part of a **production-grade MERN application**, built with **Node.js, Express, MongoDB, and TypeScript**.
-
+This code deployed on Render : https://ecommerce-nodeserver.onrender.com/
 The frontend (React) is maintained in a **separate repository**. This backend follows **enterprise-level standards**, clean architecture, and **Git peer/team collaboration rules**.
 
 ---
@@ -104,6 +104,9 @@ Server will run on:
 
 ```text
 http://localhost:8000
+
+after deploy in render
+https://ecommerce-nodeserver.onrender.com/
 ```
 
 ---
