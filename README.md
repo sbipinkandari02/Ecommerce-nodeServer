@@ -30,6 +30,69 @@ MONGO_URI=mongodb://127.0.0.1:27017
 
 ---
 
+## 🏗️ Architecture & Project Structure
+
+### Architecture Overview
+
+This backend follows a **layered architecture pattern** with clear separation of concerns:
+
+```
+Controllers → Services/Utilities → Models → Database
+     ↓
+  Middlewares (Auth, Error Handling, File Upload)
+     ↓
+  Routes (Express Routing)
+```
+
+### Project Structure
+
+```
+Ecommerce-nodeServer/
+├── src/
+│   ├── app.ts                 # Express app configuration
+│   ├── controllers/           # Route handlers & business logic
+│   │   ├── user.ts           # User management APIs
+│   │   ├── product.ts        # Product CRUD APIs
+│   │   ├── order.ts          # Order management APIs
+│   │   ├── payment.ts        # Payment processing APIs
+│   │   └── stats.ts          # Statistics & analytics APIs
+│   ├── routes/               # API route definitions
+│   │   ├── user.ts
+│   │   ├── products.ts
+│   │   ├── order.ts
+│   │   ├── payment.ts
+│   │   └── stats.ts
+│   ├── models/               # MongoDB Mongoose schemas
+│   │   ├── user.ts
+│   │   ├── product.ts
+│   │   ├── order.ts
+│   │   └── coupon.ts
+│   ├── middlewares/          # Express middlewares
+│   │   ├── auth.ts           # Authentication/JWT validation
+│   │   ├── error.ts          # Centralized error handling
+│   │   └── multer.ts         # File upload configuration
+│   ├── types/                # TypeScript type definitions
+│   │   └── types.ts
+│   ├── utils/                # Utility functions & helpers
+│   │   ├── features.ts       # Reusable feature functions
+│   │   └── utility-class.ts  # Utility class methods
+│   └── package.json
+├── tsconfig.json             # TypeScript configuration
+├── .env                       # Environment variables (not committed)
+└── README.md
+```
+
+### Data Flow
+
+1. **Request** → Express Route
+2. **Middleware** → Auth, Validation, File Upload
+3. **Controller** → Business Logic Handler
+4. **Utils/Features** → Reusable utilities & database operations
+5. **Models** → MongoDB Mongoose Schema
+6. **Response** → JSON Response to Client
+
+---
+
 ## 🛠 Backend Setup
 
 ```bash
@@ -164,19 +227,3 @@ npm start
 * Ensure APIs are tested before PR
 
 ---
-
-## 📄 License
-
-MIT License
-
----
-
-## ✨ Notes
-
-This repository intentionally contains **only backend code** for a MERN application.
-
-Frontend (React) is handled separately and communicates with this backend via REST APIs.
-
----
-
-Happy Backend Coding 🚀
