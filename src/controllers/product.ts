@@ -111,20 +111,6 @@ export const updateProduct = TryCatch(async (req, res, next) => {
 
   if (!product) return next(new ErrorHandler("Product Not Found", 404));
 
-<<<<<<< Updated upstream
-=======
-  if (photos && photos.length > 0) {
-    const photosURL = await uploadToCloudinary(photos);
-
-    const ids = product.photos.map((photo) => photo.public_id);
-
-    await deleteFromCloudinary(ids);
-
-   product.photos = photosURL as unknown as typeof product.photos;
-
-  }
-
->>>>>>> Stashed changes
   if (name) product.name = name;
   if (price) product.price = price;
   if (stock) product.stock = stock;
