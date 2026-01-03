@@ -1,5 +1,5 @@
 import express from "express";
-import { connectDB } from "./utils/features.js";
+import { connectDB, connectRedis } from "./utils/features.js";
 import { errorMiddleware } from "./middlewares/error.js";
 import { config } from "dotenv";
 import morgan from "morgan";
@@ -22,10 +22,16 @@ config({
 
 const port = process.env.PORT || 4000;
 const mongoURI = process.env.MONGO_URI || "";
-const clientURL = process.env.CLIENT_URL || "";
 const stripeKey = process.env.STRIPE_KEY || "";
+const redisURI = process.env.REDIS_URI || "";
+
+const clientURL = process.env.CLIENT_URL || "";
+
+export const redisTTL = process.env.REDIS_TTL || 60 * 60 * 4;
 
 connectDB(mongoURI);
+
+export const redis = connectRedis(redisURI);
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -34,7 +40,7 @@ cloudinary.config({
 });
 
 export const stripe = new Stripe(stripeKey)
-export const myCache = new NodeCache();
+// export const myCache = new NodeCache();
 
 const app = express();
 

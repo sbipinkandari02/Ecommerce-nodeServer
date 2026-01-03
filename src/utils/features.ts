@@ -1,8 +1,9 @@
 import { UploadApiResponse, v2 as cloudinary } from "cloudinary";
 import mongoose, { Document } from "mongoose";
 import { Product } from "../models/product.js";
-import { InvalidateCacheProps } from "../types/types.js";
-import { myCache } from "../app.js";
+import { InvalidateCacheProps, OrderItemType } from "../types/types.js";
+import { redis } from "../app.js";
+import { Redis } from "ioredis";
 
 export const connectDB = (uri: string) => {
   mongoose
@@ -11,6 +12,15 @@ export const connectDB = (uri: string) => {
     })
     .then((c) => console.log(`DB Connected to ${c.connection.host}`))
     .catch((e) => console.log(e));
+};
+
+export const connectRedis = (redisURI: string) => {
+  const redis = new Redis(redisURI);
+
+  redis.on("connect", () => console.log("Redis Connected"));
+  redis.on("error", (e) => console.log(e));
+
+  return redis;
 };
 
 interface MyDocument extends Document {
@@ -99,7 +109,7 @@ export const invalidateCache = async ({
     if (typeof productId === "object")
       productId.forEach((i) => productKeys.push(`product-${i}`));
 
-    await myCache.del(productKeys);
+    await redis.del(productKeys);
   }
   if (order) {
     const ordersKeys: string[] = [
@@ -108,10 +118,10 @@ export const invalidateCache = async ({
       `order-${orderId}`,
     ];
 
-    await myCache.del(ordersKeys);
+    await redis.del(ordersKeys);
   }
   if (admin) {
-    await myCache.del([
+    await redis.del([
       "admin-stats",
       "admin-pie-charts",
       "admin-bar-charts",
@@ -154,3 +164,13 @@ export const deleteFromCloudinary = async (publicIds: string[]) => {
 
   await Promise.all(promises);
 };
+
+export const reduceStock = async (orderItems: OrderItemType[]) => {
+  for (let i = 0; i < orderItems.length; i++) {
+    const order = orderItems[i];
+    const product = await Product.findById(order.productId);
+    if (!product) throw new Error("Product Not Found");
+    product.stock -= order.quantity;
+    await product.save();
+  }
+}
