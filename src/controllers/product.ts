@@ -14,6 +14,7 @@ import {
   invalidateCache,
   uploadToCloudinary,
 } from "../utils/features.js";
+import { Types } from "mongoose";
 
 export const getlatestProducts = TryCatch(async (req, res, next) => {
   let products;
@@ -139,7 +140,8 @@ export const updateProduct = TryCatch(async (req, res, next) => {
 
     await deleteFromCloudinary(ids);
 
-    product.photos = photosURL;
+    product.photos = photosURL as unknown as Types.DocumentArray<any>;
+
   }
 
   if (name) product.name = name;
