@@ -6,7 +6,7 @@ The frontend (React) is maintained in a **separate repository**. This backend fo
 
 ---
 
-## 🚀 Backend Tech Stack
+##  Backend Tech Stack
 
 * **Node.js**
 * **Express.js**
@@ -17,7 +17,7 @@ The frontend (React) is maintained in a **separate repository**. This backend fo
 * **JWT** (authentication – optional)
 * **dotenv** (environment configuration)
 
-## 🔐 Environment Variables
+##  Environment Variables
 
 Create a `.env` file in the **root of this backend repo**:
 
@@ -26,11 +26,11 @@ PORT=8000
 MONGO_URI=mongodb://127.0.0.1:27017
 ```
 
-> ⚠️ Do NOT commit `.env` files. Always use `.env.example` for reference.
+>  Do NOT commit `.env` files. Always use `.env.example` for reference.
 
 ---
 
-## 🏗️ Architecture & Project Structure
+##  Architecture & Project Structure
 
 ### Architecture Overview
 
@@ -111,7 +111,7 @@ https://ecommerce-nodeserver.onrender.com/
 
 ---
 
-## 🌿 Git Branching Strategy (Peer / Team Standard)
+##  Git Branching Strategy (Peer / Team Standard)
 
 This backend repository follows a **feature-based branching workflow**.
 
@@ -144,7 +144,7 @@ hotfix/production-crash
 
 ---
 
-## 🔁 Backend Development Workflow
+##  Backend Development Workflow
 
 1. Create a feature branch from `develop`
 
@@ -172,7 +172,7 @@ hotfix/production-crash
 
 ---
 
-## ✅ Commit Message Convention
+##  Commit Message Convention
 
 ```text
 feat: add product update API
@@ -183,7 +183,7 @@ chore: update dependencies
 
 ---
 
-## 🧪 Code Standards (Backend)
+##  Code Standards (Backend)
 
 * TypeScript strict mode enabled
 * No `any` unless absolutely required
@@ -194,16 +194,7 @@ chore: update dependencies
 
 ---
 
-## 🧼 Linting & Formatting
-
-```bash
-npm run lint
-npm run format
-```
-
----
-
-## 📦 Build & Run for Production
+##  Build & Run for Production
 
 ```bash
 npm run build
@@ -212,7 +203,7 @@ npm start
 
 ---
 
-## 🔐 Security Best Practices
+##  Security Best Practices
 
 * Validate all request payloads
 * Sanitize file uploads
@@ -222,7 +213,7 @@ npm start
 
 ---
 
-## 🤝 Contribution Guidelines (Backend)
+##  Contribution Guidelines (Backend)
 
 * Follow branch naming rules
 * Keep PRs small and focused
