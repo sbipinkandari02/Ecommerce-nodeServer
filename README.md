@@ -13,9 +13,10 @@ The frontend (React) is maintained in a **separate repository**. This backend fo
 * **TypeScript**
 * **MongoDB + Mongoose**
 * **Multer** (file uploads)
-* **Cloudinary** (media storage – optional)
-* **JWT** (authentication – optional)
+* **Cloudinary** (media storage)
+* **Redis** (caching)
 * **dotenv** (environment configuration)
+* **Stripe** (payment gateway)
 
 ##  Environment Variables
 
